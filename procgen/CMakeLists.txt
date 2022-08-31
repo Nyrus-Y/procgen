@@ -47,9 +47,9 @@ add_library(env
   src/entity.cpp
   src/game.cpp
   src/game-registry.cpp
-  # src/games/dodgeball.cpp
+  src/games/dodgeball.cpp
   src/games/edodgeball.cpp
-  # src/games/bigfish.cpp
+  src/games/bigfish.cpp
   src/games/bigfishm.cpp
   src/games/ebigfish.cpp
   src/games/ebigfishs.cpp
@@ -58,7 +58,7 @@ add_library(env
   src/games/caveflyer.cpp
   src/games/climber.cpp
   src/games/coinrun_old.cpp
-  # src/games/coinrun.cpp
+  src/games/coinrun.cpp
   src/games/ecoinrun.cpp
   src/games/fruitbot.cpp
   src/games/heist.cpp

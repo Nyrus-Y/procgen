@@ -57,9 +57,11 @@ def _attempt_configure(build_type, package):
         cmake_prefix_paths = ["/usr/local/opt/qt5/lib/cmake"]
         conda_exe = shutil.which("conda")
         if conda_exe is not None:
-            conda_info = json.loads(
-                sp.run(["conda", "info", "--json"], stdout=sp.PIPE).stdout
-            )
+            # conda_info = json.loads(
+            #     sp.run(["conda", "info", "--json"], stdout=sp.PIPE).stdout
+            # )
+            conda_info = {"active_prefix": "C:\\\\Users\\\\tongz\\\\anaconda3\\\\envs\\\\explainingCoinJump",
+                          "conda_prefix": None}
             conda_prefix = conda_info["active_prefix"]
             if conda_prefix is None:
                 conda_prefix = conda_info["conda_prefix"]
@@ -72,7 +74,7 @@ def _attempt_configure(build_type, package):
     generator = "Unix Makefiles"
     extra_configure_options = []
     if platform.system() == "Windows":
-        generator = "Visual Studio 16 2019"
+        generator = "Visual Studio 17 2022"
         extra_configure_options.extend(["-A", "x64"])
     configure_cmd = [
         "cmake",
