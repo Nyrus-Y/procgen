@@ -8,7 +8,8 @@ const std::string NAME = "bigfishm";
 
 const int COMPLETION_BONUS = 10.0f;
 const int POSITIVE_REWARD = 1.0f;
-const float SURVIVAL_REWARD_PER_STEP = 0.00005; //TO DO: Come up with a reward system 
+const float SURVIVAL_REWARD_PER_STEP = -0.01; //TO DO: Come up with a reward system
+const float EATEN_PENALTY = -5.0
 
 const int FISH = 2;
 
@@ -55,6 +56,7 @@ class BigFishM : public BasicAbstractGame {
         if (obj->type == FISH) {
             if (obj->rx > agent->rx) {
                 step_data.done = true;
+                step_data.reward += EATEN_PENALTY;
             } else {
                 step_data.reward += POSITIVE_REWARD;
                 obj->will_erase = true;
@@ -150,7 +152,7 @@ class BigFishM : public BasicAbstractGame {
         }
 
         // step_data.reward += get_reward(data[0], data[1], data[4], data[5]);
-        // step_data.reward += SURVIVAL_REWARD_PER_STEP * cur_time;
+        step_data.reward += SURVIVAL_REWARD_PER_STEP;
         if (action_vx > 0)
             agent->is_reflected = false;
         if (action_vx < 0)
